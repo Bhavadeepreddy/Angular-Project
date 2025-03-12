@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-new-component',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NewComponentComponent {
 
+  @Input() featureSet: any;
+
+  feature = "Feature One"
+  discription = "Some Small Feature Of The Bootstrap In Our Project"
+  button = "Learn More..."
 }

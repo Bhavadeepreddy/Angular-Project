@@ -26,3 +26,16 @@ npm install bootstrap // THIS WILL INSTALL LATEST VERSION OF BOOTSTRAP
     "scripts": [
         "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     ]
+
+
+// TO CREATE A PIPE
+    ng generate pipe pipes/gigabytes-to-megabytes
+// HERE WE ARE CREATING A gigabytes-to-megabytes PIPE UNDER pipes FOLDER
+
+// TO CREATE A SERVICE
+    ng generate service myService/myDate
+// HERE WE ARE CREATING THE myDate SERVICE FILE UNDER myService FOLDER
+
+// Since Angular 17+ doesn't generate app.module.ts, the traditional HttpClientModule isn't used. Instead, 
+// we need to explicitly provide the HttpClient service using provideHttpClient() in bootstrapApplication().
+// SO WE HAVE TO EDIT IN main.ts FILE BUT WE HAVE app.config.ts FILE SO I EDITED HERE

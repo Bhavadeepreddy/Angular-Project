@@ -1,9 +1,21 @@
 <div class="card mb-3 small">
-    <h5 class="card-header fs-6">Feature One</h5>
+    <h5 class="card-header fs-6">{{ feature }}</h5>
     <div class="card-body">
-        <p>Some Small Feature Of The Bootstrap In Our Project</p>
+        <p>{{discription}}</p>
     </div>
     <div class="card-footer">
-        <a href="#" class="btn btn-success btn-sm">Read More...</a>
+        <a href="#" class="btn btn-success btn-sm">{{ button }}</a>
+    </div>
+    
+</div>
+
+<!-- FEATURE SET -->
+<div class="card mt-3">
+    <h5 class="card-header fs-6">{{ featureSet.heading }}</h5>
+    <div class="card-body">
+        <p>{{ featureSet.body }}</p>
+    </div>
+    <div class="card-footer">
+        <a href="{{ featureSet.link }}" class="btn btn-success btn-sm">{{ featureSet.linkText }}</a>
     </div>
 </div>

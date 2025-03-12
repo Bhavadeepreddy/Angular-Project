@@ -1,10 +1,99 @@
 <header class="main-header py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-5 text-center">
-                <h1 class="display-3">Hello World</h1>
+            <div class="col-md-8 text-center">
+                <h1 class="display-3">{{ title }}</h1>
+                <p><small>{{ todayDate }}</small></p>
                 <hr>
-                <h3 class="fs-5 fw-light">Welcome To First Bootstrap Example</h3>
+                <h3 class="fs-5 fw-light">{{ Discription }}</h3>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="py-5">
+                    <select class="form-select">
+                        <option *ngFor="let month of months">{{ month }}</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!--  IF -->
+                <ng-container *ngIf="isAvailable;else elseTemplate">
+                    <div class="alert alert-success">
+                        <p class="m-0"><strong>Note: </strong>Yes! It is Available</p>
+                    </div>
+                </ng-container>
+                <!-- ELSE -->
+                <ng-template #elseTemplate>
+                    <div class="alert alert-danger">
+                        <p class="m-0"><strong>Note: </strong>Nope! It's not Available</p>
+                    </div>
+                </ng-template>  
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <ng-container *ngIf="numberOfMonths == 12;else elseTemplate1">
+                    <div class="alert alert-success">
+                        <p class="m-0"><strong>Note: </strong>There Are 12 Months Are Available In Our Application</p>
+                    </div>
+                </ng-container>
+                <ng-template #elseTemplate1>
+                    <div class="alert alert-warning">
+                        <p class="m-0"><strong>Note: </strong>There Are Lessthan 12 Months Mentioned In The Application</p>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <!-- <h1>check 0</h1> -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-success" (click)="setTrue()">True</button>
+                    <button class="btn btn-danger" (click)="setFalse()">False</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <div [class]="alertClass" class="alert mt-3">{{ message }}</div>
+            </div>
+            <div class="col-md-8 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-success" (click)="handleButtonClick(true)">Success</button>
+                    <button class="btn btn-warning" (click)="handleButtonClick(false)">Warning</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="alert" [class]="isSwitchOn ? 'alert-success' : 'alert-warning'">
+                    <div class="form-check form-switch pb-3 mb-3 border-bottom">
+                        <input class="form-check-input" type="checkbox" id="switch" [(ngModel)]="isSwitchOn" (change)="handleSwitchToggle()">
+                        <label class="form-check-label" for="switch">Toogle Switch</label>
+                    </div>
+                    {{ messages }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <h3 class="fs-3 display-3">{{ upperHeading | uppercase }}</h3>
+                <h3 class="fs-3 display-3">{{ lowerHeading | lowercase }}</h3>
+            </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <h3 class="fs-4 display-3">200GB = {{ 200 | gigabytesToMegabytes }}MB</h3>
             </div>
         </div>
     </div>
@@ -13,10 +102,44 @@
 <section class="main-content">
     <div class="container">
         <div class="row justify-content-center">
+            <!-- <app-new-component class="col-md-3"></app-new-component>
             <app-new-component class="col-md-3"></app-new-component>
             <app-new-component class="col-md-3"></app-new-component>
-            <app-new-component class="col-md-3"></app-new-component>
-            <app-new-component class="col-md-3"></app-new-component>
+            <app-new-component class="col-md-3"></app-new-component> -->
+            <!-- FEATURE SET -->
+            <app-new-component class="col-md-3" [featureSet]="firstFeature"></app-new-component>
+            <app-new-component class="col-md-3" [featureSet]="secondFeature"></app-new-component>
+            <app-new-component class="col-md-3" [featureSet]="thirdFeature"></app-new-component>
+            <app-new-component class="col-md-3" [featureSet]="fourthFeature"></app-new-component>
+        </div>
+    </div>
+</section>
+
+<section class="user-data">
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-md-12">
+                <table class="table table-bordered small">
+                    <thead>
+                        <tr class="text-center">
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Email</td>
+                            <td>City</td>
+                            <td>Zipcode</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of persondata" class="text-center">
+                            <td>{{user.id}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.address.city}}</td>
+                            <td>{{user.address.zipcode}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
